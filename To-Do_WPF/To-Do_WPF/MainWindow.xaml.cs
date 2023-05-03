@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using To_Do_WPF.To_Do_App;
 
 namespace To_Do_WPF
 {
@@ -20,10 +21,22 @@ namespace To_Do_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        Repository repository = Repository.Instance;
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = repository.TasksList;
         }
-        sadaldjkashdjk
+
+        private void openAddWindow_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditWindow addEditWindow = new AddEditWindow();
+            addEditWindow.Show();
+        }
+
+        private void openEditWindow_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,0 +1,65 @@
+﻿<Window x:Class="To_Do_WPF.AddEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:To_Do_WPF"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Add/Edit" Height="600" Width="400"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="MyWaterMarkStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <Border Background="White" BorderBrush="#FF7D8683" 
+                                    BorderThickness="1"/>
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" 
+                                          VerticalAlignment="Center" />
+                            <Label Margin="5,0,0,0" x:Name="WaterMarkLabel" 
+                                   Content="{TemplateBinding Tag}" VerticalAlignment="Top"
+                                   Visibility="Collapsed" Foreground="Gray" 
+                                   FontFamily="Arial"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Text" Value=""/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Visibility" 
+                                        TargetName="WaterMarkLabel" Value="Visible"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="DimGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <StackPanel>
+        <TextBox x:Name="addTaskName" Style="{StaticResource MyWaterMarkStyle}"
+                 Margin="10,20,10,10" FontSize="18" BorderBrush="AliceBlue"
+                 Tag="Task name" Height="30"/>
+        <Border BorderBrush="Gray" Background="LightGray" BorderThickness="2">
+            <StackPanel Orientation="Horizontal">
+                <DatePicker x:Name="addTaskDate" Height="25" Width="30" Margin="10" 
+                            SelectedDate="{x:Static sys:DateTime.Now}"/>
+                <xctk:TimePicker x:Name="addTaskTime" Height="25" Width="70" Margin="10" 
+                                 DefaultValue="17:00"/>
+                <Button x:Name="addTaskRemider" Content="Remind" Height="25" Width="50" 
+                        Margin="10"/>
+                <Button x:Name="addTaskBtn" Content="Add" Height="25" Width="30" 
+                        Margin="130,10,0,10" Click="addTaskBtn_Click"/>
+            </StackPanel>
+        </Border>
+        <TextBox x:Name="addTaskNote" Margin="10,20,10,10" FontSize="18" 
+                 BorderBrush="AliceBlue" Height="115" 
+                 Style="{StaticResource MyWaterMarkStyle}" Tag="Add note"
+                 VerticalAlignment="Top"/>
+    </StackPanel>
+</Window>

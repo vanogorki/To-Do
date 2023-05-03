@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "tC0Q7FhiKKsZ/XDcOffA9B9XwhUA2S7Bst6ekczqfH16l0a6gol6u8KMuUgQdpNm6Nannr386n4UtC71KVbinQ==",
+  "dgSpecHash": "/U0XnHGirbjzdphq73kZCDQBOgTaQL8I2e7/YkKzBM6ZZMuTRoFUxVfr+BRvqaWcc01CC1YoHT4xFFyZAaduIg==",
   "success": true,
   "projectFilePath": "C:\\Users\\vanogorki\\source\\repos\\To-Do\\To-Do_WPF\\To-Do_WPF\\To-Do_WPF.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\vanogorki\\.nuget\\packages\\extended.wpf.toolkit\\4.5.0\\extended.wpf.toolkit.4.5.0.nupkg.sha512",
+    "C:\\Users\\vanogorki\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

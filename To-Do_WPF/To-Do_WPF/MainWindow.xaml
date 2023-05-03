@@ -3,10 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:To_Do_WPF"
+        xmlns:local="clr-namespace:To_Do_WPF" 
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="To-Do" Height="600" Width="400"
+        WindowStartupLocation="CenterScreen">
+    <StackPanel>
+        <Label Content="ALL TASKS" HorizontalAlignment="Center" FontSize="30"/>
+        <Expander x:Name="todayList" Header="Today" FontSize="18" IsExpanded="True" Margin="0,10,0,10">
+        </Expander>
+        <Expander x:Name="weekList" Header="On this week" FontSize="18" Margin="0,10,0,10">
+        </Expander>
+        <Expander x:Name="somedayList" Header="Someday" FontSize="18" Margin="0,10,0,10">
+        </Expander>
+        <Expander x:Name="completedList" Header="Completed" FontSize="18" Margin="0,10,0,10">
+        </Expander>
+        <Button x:Name="openAddWindow" Content="New task" Height="20" Width="60" Margin="300,10,0,0" Click="openAddWindow_Click"/>
+        <Button x:Name="openEditWindow" Content="Edit task" Height="20" Width="60" Margin="300,10,0,0" Click="openEditWindow_Click"/>
+    </StackPanel>
 </Window>

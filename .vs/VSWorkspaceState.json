@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\To-Do_WPF",
+    "\\To-Do_WPF\\To-Do_WPF"
   ],
-  "SelectedNode": "\\C:\\Users\\vanogorki\\Source\\Repos\\To-Do",
+  "SelectedNode": "\\To-Do_WPF\\To-Do_WPF\\MainWindow.xaml",
   "PreviewInSolutionExplorer": false
 }
