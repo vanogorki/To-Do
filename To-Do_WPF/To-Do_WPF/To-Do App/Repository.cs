@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace To_Do_WPF.To_Do_App
                 return instance;
             }
         }
-        public List<myTask> TasksList = JsonConvert.DeserializeObject<List<myTask>>(File.ReadAllText("Tasks.json"));
+        public ObservableCollection<myTask> TasksList = JsonConvert.DeserializeObject<ObservableCollection<myTask>>(File.ReadAllText("Tasks.json"));
         public void SaveTasksAsJson()
         {
             var options = new JsonSerializerOptions

@@ -25,7 +25,11 @@ namespace To_Do_WPF
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = repository.TasksList;
+            AllTasks.ItemsSource = repository.TasksList;
+
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(AllTasks.ItemsSource);
+            PropertyGroupDescription groupDescription = new PropertyGroupDescription("Category");
+            view.GroupDescriptions.Add(groupDescription);
         }
 
         private void openAddWindow_Click(object sender, RoutedEventArgs e)
@@ -36,7 +40,17 @@ namespace To_Do_WPF
 
         private void openEditWindow_Click(object sender, RoutedEventArgs e)
         {
+           
+        }
 
+        private void Task_Completed(object sender, RoutedEventArgs e)
+        {
+            repository.SaveTasksAsJson();
+        }
+
+        private void Task_Not_Completed(object sender, RoutedEventArgs e)
+        {
+            repository.SaveTasksAsJson();
         }
     }
 }

@@ -7,17 +7,89 @@
         mc:Ignorable="d"
         Title="To-Do" Height="600" Width="400"
         WindowStartupLocation="CenterScreen">
-    <StackPanel>
-        <Label Content="ALL TASKS" HorizontalAlignment="Center" FontSize="30"/>
-        <Expander x:Name="todayList" Header="Today" FontSize="18" IsExpanded="True" Margin="0,10,0,10">
-        </Expander>
-        <Expander x:Name="weekList" Header="On this week" FontSize="18" Margin="0,10,0,10">
-        </Expander>
-        <Expander x:Name="somedayList" Header="Someday" FontSize="18" Margin="0,10,0,10">
-        </Expander>
-        <Expander x:Name="completedList" Header="Completed" FontSize="18" Margin="0,10,0,10">
-        </Expander>
-        <Button x:Name="openAddWindow" Content="New task" Height="20" Width="60" Margin="300,10,0,0" Click="openAddWindow_Click"/>
-        <Button x:Name="openEditWindow" Content="Edit task" Height="20" Width="60" Margin="300,10,0,0" Click="openEditWindow_Click"/>
-    </StackPanel>
+    <Grid Margin="10">
+        <ListView Name="AllTasks">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="120" 
+                                    DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Time" Width="60" 
+                                    DisplayMemberBinding="{Binding Time}" />
+                    <GridViewColumn Header="Note" Width="70" 
+                                    DisplayMemberBinding="{Binding Note}" />
+                    <GridViewColumn Header="Completed?" Width="70" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox x:Name="checkBox" IsChecked="{Binding IsCompleted}" 
+                                          Unchecked="Task_Not_Completed" Checked="Task_Completed" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <Expander IsExpanded="True">
+                                            <Expander.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="Gray" FontSize="22" VerticalAlignment="Bottom" />
+                                                    <TextBlock Text="{Binding ItemCount}" FontSize="22" Foreground="Green" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" VerticalAlignment="Bottom" />
+                                                    <TextBlock Text=" task(s)" FontSize="22" Foreground="Silver" FontStyle="Italic" VerticalAlignment="Bottom" />
+                                                </StackPanel>
+                                            </Expander.Header>
+                                            <ItemsPresenter />
+                                        </Expander>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </ListView.GroupStyle>
+        </ListView>
+        <Button x:Name="openAddWindow" Content="New task" Height="20" Width="60"
+                Margin="300,10,0,0" Click="openAddWindow_Click"/>
+        <Button x:Name="openEditWindow" Content="Edit task" Height="20" Width="60"
+                Margin="300,50,0,0" Click="openEditWindow_Click"/>
+    </Grid>
 </Window>
+
+
+<!--<Window.Resources>
+        <DataTemplate x:Key="tasks">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding Path=Name}"  FontSize="15" Margin="10" />
+                <TextBlock Text="{Binding Path=Date}"  FontSize="15" Margin="10" />
+                <TextBlock Text="{Binding Path=Time}"  FontSize="15" Margin="10" />
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <ScrollViewer>
+        <StackPanel>
+            <Label Content="ALL TASKS" HorizontalAlignment="Center" FontSize="30"/>
+            <Expander Header="Today" FontSize="18" IsExpanded="True"
+                  Margin="0,10,0,10">
+                <ListView ItemsSource="{Binding}"
+                      ItemTemplate="{StaticResource tasks}"
+                      HorizontalAlignment="Center"
+                      IsSynchronizedWithCurrentItem="True"
+                      Margin="10"/>
+            </Expander>
+            <Expander x:Name="weekList" Header="On this week" FontSize="18" Margin="0,10,0,10">
+            </Expander>
+            <Expander x:Name="somedayList" Header="Someday" FontSize="18" Margin="0,10,0,10">
+            </Expander>
+            <Expander x:Name="completedList" Header="Completed" FontSize="18" Margin="0,10,0,10">
+            </Expander>
+            <Button x:Name="openAddWindow" Content="New task" Height="20" Width="60"
+                Margin="300,10,0,0" Click="openAddWindow_Click"/>
+            <Button x:Name="openEditWindow" Content="Edit task" Height="20" Width="60"
+                Margin="300,10,0,0" Click="openEditWindow_Click"/>
+        </StackPanel>
+    </ScrollViewer>-->

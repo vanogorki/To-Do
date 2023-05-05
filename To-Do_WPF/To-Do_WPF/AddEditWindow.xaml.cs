@@ -32,13 +32,27 @@ namespace To_Do_WPF
             repository.TasksList.Add(new myTask
             {
                 Name = addTaskName.Text,
-                Date = addTaskDate.SelectedDate.Value.Date.ToShortDateString(),
-                Time = addTaskTime.Text.ToString(),
+                Category = SelecetDay(addTaskDate.SelectedDate.Value).ToString(),
+                Time = addTaskTime.Text,
                 Reminder = default,
                 IsCompleted = false,
-                Note = addTaskNote.Text,
+                Note = addTaskNote.Text
             });
             repository.SaveTasksAsJson();
+            this.Close();
+        }
+
+        private myTask.category SelecetDay(DateTime date)
+        {
+            if (date == DateTime.Now.Date)
+            {
+                return myTask.category.Today;
+            }
+            else if (date > DateTime.Now.Date && date <= DateTime.Now.Date.AddDays(7))
+            {
+                return myTask.category.Week;
+            }
+            else return myTask.category.Someday;
         }
     }
 }
