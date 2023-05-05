@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using To_Do_WPF.To_Do_App;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace To_Do_WPF
 {
@@ -32,6 +33,7 @@ namespace To_Do_WPF
             repository.TasksList.Add(new myTask
             {
                 Name = addTaskName.Text,
+                Date = addTaskDate.SelectedDate.Value.ToShortDateString(),
                 Category = SelecetDay(addTaskDate.SelectedDate.Value).ToString(),
                 Time = addTaskTime.Text,
                 Reminder = default,
@@ -39,7 +41,6 @@ namespace To_Do_WPF
                 Note = addTaskNote.Text
             });
             repository.SaveTasksAsJson();
-            this.Close();
         }
 
         private myTask.category SelecetDay(DateTime date)
