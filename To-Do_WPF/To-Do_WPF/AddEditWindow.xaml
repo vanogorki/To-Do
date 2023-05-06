@@ -54,11 +54,10 @@
         
         <Border BorderBrush="Gray" Background="LightGray" BorderThickness="2">
             <StackPanel Orientation="Horizontal">
-                <DatePicker x:Name="addTaskDate" Height="25" Width="30" Margin="10" 
-                            SelectedDate="{x:Static sys:DateTime.Now}"/>
+                <DatePicker x:Name="addTaskDate" Height="25" Width="30" Margin="10"/>
                 <xctk:TimePicker x:Name="addTaskTime" Height="25" Width="70" Margin="10" Text=""/>
                 <Button x:Name="addTaskRemider" Content="Remind" Height="25" Width="50" 
-                        Margin="10"/>
+                        Margin="10" Click="addTaskRemider_Click"/>
                 <Button x:Name="addTaskBtn" Content="Add" Height="25" Width="30" 
                         Margin="130,10,0,10" Click="addTaskBtn_Click"/>
             </StackPanel>

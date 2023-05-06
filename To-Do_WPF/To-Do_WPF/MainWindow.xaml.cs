@@ -32,6 +32,10 @@ namespace To_Do_WPF
             view.GroupDescriptions.Add(groupDescription);
         }
 
+        private ICommand _OpenEditWindowCommand = null;
+        public ICommand ChangeColorCmd
+        => _OpenEditWindowCommand ??= new OpenEditWindowCommand();
+
         private void openAddWindow_Click(object sender, RoutedEventArgs e)
         {
             AddEditWindow addEditWindow = new AddEditWindow();
@@ -40,17 +44,34 @@ namespace To_Do_WPF
 
         private void openEditWindow_Click(object sender, RoutedEventArgs e)
         {
-           
+            
         }
 
         private void Task_Completed(object sender, RoutedEventArgs e)
         {
+            var task = (myTask)((CheckBox)e.Source).DataContext;
+            task.Category = myTask.category.Completed.ToString();
             repository.SaveTasksAsJson();
         }
 
         private void Task_Not_Completed(object sender, RoutedEventArgs e)
         {
+            var task = (myTask)((CheckBox)e.Source).DataContext;
+            task.Category = SelecetCategory(task.Date).ToString();
             repository.SaveTasksAsJson();
+        }
+
+        private myTask.category SelecetCategory(DateTime? date)
+        {
+            if (date == DateTime.Now.Date)
+            {
+                return myTask.category.Today;
+            }
+            else if (date > DateTime.Now.Date && date <= DateTime.Now.Date.AddDays(7))
+            {
+                return myTask.category.Week;
+            }
+            else return myTask.category.Someday;
         }
     }
 }

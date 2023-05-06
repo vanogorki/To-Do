@@ -11,6 +11,14 @@
         <ListView Name="AllTasks">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Width="30" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox x:Name="checkBox"  
+                                          Unchecked="Task_Not_Completed" Checked="Task_Completed" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Name" Width="100" 
                                     DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Date" Width="70" 
@@ -19,14 +27,6 @@
                                     DisplayMemberBinding="{Binding Time}" />
                     <GridViewColumn Header="Note" Width="70" 
                                     DisplayMemberBinding="{Binding Note}" />
-                    <GridViewColumn Header="Completed?" Width="70" >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <CheckBox x:Name="checkBox" IsChecked="{Binding IsCompleted}" 
-                                          Unchecked="Task_Not_Completed" Checked="Task_Completed" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
                 </GridView>
             </ListView.View>
 
@@ -58,6 +58,10 @@
         <Button x:Name="openAddWindow" Content="New task" Height="20" Width="60"
                 Margin="300,10,0,0" Click="openAddWindow_Click"/>
         <Button x:Name="openEditWindow" Content="Edit task" Height="20" Width="60"
-                Margin="300,50,0,0" Click="openEditWindow_Click"/>
+                Margin="300,50,0,0" Click="openEditWindow_Click" 
+                Command="{Binding Path=ChangeColorCmd,
+                RelativeSource={RelativeSource Mode=FindAncestor,
+                AncestorType={x:Type Window}}}"
+                CommandParameter="{Binding ElementName=AllTasks, Path=SelectedItem}"/>
     </Grid>
 </Window>
