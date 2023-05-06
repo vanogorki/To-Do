@@ -8,7 +8,7 @@
         Title="To-Do" Height="600" Width="400"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
-        <ListView Name="AllTasks">
+        <ListView Name="AllTasks" MouseDoubleClick="dblClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="30" >
@@ -21,9 +21,9 @@
                     </GridViewColumn>
                     <GridViewColumn Header="Name" Width="100" 
                                     DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Date" Width="70" 
+                    <GridViewColumn Header="Date" Width="60" 
                                     DisplayMemberBinding="{Binding Date}" />
-                    <GridViewColumn Header="Time" Width="60" 
+                    <GridViewColumn Header="Time" Width="50" 
                                     DisplayMemberBinding="{Binding Time}" />
                     <GridViewColumn Header="Note" Width="70" 
                                     DisplayMemberBinding="{Binding Note}" />

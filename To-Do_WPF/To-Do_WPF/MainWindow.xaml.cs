@@ -68,5 +68,11 @@ namespace To_Do_WPF
             }
             else return myTask.category.Someday;
         }
+
+        private void dblClick(object sender, MouseButtonEventArgs e)
+        {
+            var task = (myTask)((ListView)e.Source).DataContext;
+            MessageBox.Show($"{task.Note}");
+        }
     }
 }
