@@ -1,34 +1,16 @@
 [
   {
-    "Name": "asdads",
+    "Name": "asdasdas",
     "Date": null,
     "Category": "Someday",
     "Time": "",
-    "Reminder": null,
     "Note": ""
   },
   {
-    "Name": "asdads",
+    "Name": "asdasdas",
     "Date": "2023-05-06T00:00:00",
-    "Category": "Completed",
+    "Category": "Today",
     "Time": "",
-    "Reminder": null,
-    "Note": ""
-  },
-  {
-    "Name": "asdads",
-    "Date": "2023-05-07T00:00:00",
-    "Category": "Completed",
-    "Time": "02:00",
-    "Reminder": null,
-    "Note": ""
-  },
-  {
-    "Name": "asdads",
-    "Date": "2023-05-08T00:00:00",
-    "Category": "Completed",
-    "Time": "02:00",
-    "Reminder": null,
     "Note": ""
   }
 ]

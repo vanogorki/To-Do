@@ -58,8 +58,8 @@
         <Button x:Name="openAddWindow" Content="New task" Height="20" Width="60"
                 Margin="300,10,0,0" Click="openAddWindow_Click"/>
         <Button x:Name="openEditWindow" Content="Edit task" Height="20" Width="60"
-                Margin="300,50,0,0" Click="openEditWindow_Click" 
-                Command="{Binding Path=ChangeColorCmd,
+                Margin="300,50,0,0" 
+                Command="{Binding Path=OpenEditWindowCommand,
                 RelativeSource={RelativeSource Mode=FindAncestor,
                 AncestorType={x:Type Window}}}"
                 CommandParameter="{Binding ElementName=AllTasks, Path=SelectedItem}"/>

@@ -33,18 +33,13 @@ namespace To_Do_WPF
         }
 
         private ICommand _OpenEditWindowCommand = null;
-        public ICommand ChangeColorCmd
+        public ICommand OpenEditWindowCommand
         => _OpenEditWindowCommand ??= new OpenEditWindowCommand();
 
         private void openAddWindow_Click(object sender, RoutedEventArgs e)
         {
             AddEditWindow addEditWindow = new AddEditWindow();
             addEditWindow.Show();
-        }
-
-        private void openEditWindow_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
 
         private void Task_Completed(object sender, RoutedEventArgs e)
