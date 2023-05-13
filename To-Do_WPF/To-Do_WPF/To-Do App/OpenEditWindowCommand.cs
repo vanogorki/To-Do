@@ -18,11 +18,11 @@ namespace To_Do_WPF.To_Do_App
 
 
         public bool CanExecute(object? parameter)
-            => (parameter as myTask) != null;
+            => (parameter as MyTask) != null;
 
-        public void Execute(object? parameter)
+        public void Execute(object parameter)
         {
-            AddEditWindow addEditWindow = new AddEditWindow();
+            AddEditWindow addEditWindow = new AddEditWindow(parameter);
             addEditWindow.Show();
         }
     }

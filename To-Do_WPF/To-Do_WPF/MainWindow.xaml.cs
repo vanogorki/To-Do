@@ -44,34 +44,36 @@ namespace To_Do_WPF
 
         private void Task_Completed(object sender, RoutedEventArgs e)
         {
-            var task = (myTask)((CheckBox)e.Source).DataContext;
-            task.Category = myTask.category.Completed.ToString();
+            var task = (MyTask)((CheckBox)e.Source).DataContext;
+            task.Category = Category.Completed;
+            repository.TasksList.Remove(task);
+            repository.TasksList.Add(task);
             repository.SaveTasksAsJson();
         }
 
         private void Task_Not_Completed(object sender, RoutedEventArgs e)
         {
-            var task = (myTask)((CheckBox)e.Source).DataContext;
-            task.Category = SelecetCategory(task.Date).ToString();
+            var task = (MyTask)((CheckBox)e.Source).DataContext;
+            task.Category = SelecetCategory(task.Date);
             repository.SaveTasksAsJson();
         }
 
-        private myTask.category SelecetCategory(DateTime? date)
+        private Category SelecetCategory(DateTime? date)
         {
             if (date == DateTime.Now.Date)
             {
-                return myTask.category.Today;
+                return Category.Today;
             }
             else if (date > DateTime.Now.Date && date <= DateTime.Now.Date.AddDays(7))
             {
-                return myTask.category.Week;
+                return Category.Week;
             }
-            else return myTask.category.Someday;
+            else return Category.Someday;
         }
 
-        private void dblClick(object sender, MouseButtonEventArgs e)
+        void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var task = (myTask)((ListView)e.Source).DataContext;
+            var task = (MyTask)((ListViewItem)e.Source).DataContext;
             MessageBox.Show($"{task.Note}");
         }
     }

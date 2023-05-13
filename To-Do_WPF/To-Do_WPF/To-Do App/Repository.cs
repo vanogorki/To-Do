@@ -27,7 +27,7 @@ namespace To_Do_WPF.To_Do_App
                 return instance;
             }
         }
-        public ObservableCollection<myTask> TasksList = JsonConvert.DeserializeObject<ObservableCollection<myTask>>(File.ReadAllText("Tasks.json"));
+        public ObservableCollection<MyTask> TasksList = new ObservableCollection<MyTask>(JsonConvert.DeserializeObject<List<MyTask>>(File.ReadAllText("Tasks.json")).OrderBy(x => x.Category));
         public void SaveTasksAsJson()
         {
             var options = new JsonSerializerOptions

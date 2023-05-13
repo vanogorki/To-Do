@@ -23,41 +23,46 @@ namespace To_Do_WPF
     public partial class AddEditWindow : Window
     {
         Repository repository = Repository.Instance;
-
-        public AddEditWindow()
+        public AddEditWindow() 
         {
             InitializeComponent();
+        }
+        public AddEditWindow(object task)
+        {
+            InitializeComponent();
+            MyTask editTask = task as MyTask;
+            addTaskName.Text = editTask.Name;
+            addTaskDate.SelectedDate = editTask.Date;
+            addTaskTime.Text = editTask.Time;
+            addTaskNote.Text = editTask.Note;
         }
 
         private void addTaskBtn_Click(object sender, RoutedEventArgs e)
         {
-            repository.TasksList.Add(new myTask
+            var previousTask = repository.TasksList.FirstOrDefault(x => x.Category > SelecetCategory(addTaskDate.SelectedDate));
+            repository.TasksList.Insert(previousTask != null ? repository.TasksList.IndexOf(previousTask) : 0, new MyTask
             {
+                Id = Guid.NewGuid(),
                 Name = addTaskName.Text,
                 Date = addTaskDate.SelectedDate,
-                Category = SelecetCategory(addTaskDate.SelectedDate).ToString(),
+                Category = SelecetCategory(addTaskDate.SelectedDate),
                 Time = addTaskTime.Text,
                 Note = addTaskNote.Text
             });
             repository.SaveTasksAsJson();
         }
 
-        private myTask.category SelecetCategory(DateTime? date)
+        private Category SelecetCategory(DateTime? date)
         {
             if (date == DateTime.Now.Date)
             {
-                return myTask.category.Today;
+                return Category.Today;
             }
             else if (date > DateTime.Now.Date && date <= DateTime.Now.Date.AddDays(7))
             {
-                return myTask.category.Week;
+                return Category.Week;
             }
-            else return myTask.category.Someday;
-        }
-
-        private void addTaskRemider_Click(object sender, RoutedEventArgs e)
-        {
-            
+            else return Category.Someday;
         }
     }
 }

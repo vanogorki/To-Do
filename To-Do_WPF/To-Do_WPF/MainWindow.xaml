@@ -8,7 +8,7 @@
         Title="To-Do" Height="600" Width="400"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
-        <ListView Name="AllTasks" MouseDoubleClick="dblClick">
+        <ListView Name="AllTasks" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="30" >
@@ -22,13 +22,20 @@
                     <GridViewColumn Header="Name" Width="100" 
                                     DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="Date" Width="60" 
-                                    DisplayMemberBinding="{Binding Date}" />
+                                    DisplayMemberBinding="{Binding Date, 
+                                    StringFormat={}{0:MM/dd/yyyy}}" />
                     <GridViewColumn Header="Time" Width="50" 
                                     DisplayMemberBinding="{Binding Time}" />
                     <GridViewColumn Header="Note" Width="70" 
                                     DisplayMemberBinding="{Binding Note}" />
                 </GridView>
             </ListView.View>
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
+                </Style>
+            </ListView.ItemContainerStyle>
 
             <ListView.GroupStyle>
                 <GroupStyle>
