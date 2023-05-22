@@ -56,13 +56,13 @@ namespace To_Do_WPF
         }
         private void AddEditTask()
         {
-            var previousTask = repository.TasksList.FirstOrDefault(x => x.Category > SelecetCategory(addTaskDate.SelectedDate));
+            var previousTask = repository.TasksList.FirstOrDefault(x => x.Category > SelectCategory(addTaskDate.SelectedDate));
             repository.TasksList.Insert(previousTask != null ? repository.TasksList.IndexOf(previousTask) : 0, new MyTask
             {
                 Id = Guid.NewGuid(),
                 Name = addTaskName.Text,
                 Date = addTaskDate.SelectedDate,
-                Category = SelecetCategory(addTaskDate.SelectedDate),
+                Category = SelectCategory(addTaskDate.SelectedDate),
                 Time = addTaskTime.Text,
                 Note = addTaskNote.Text,
                 IsCompleted = false
@@ -70,7 +70,7 @@ namespace To_Do_WPF
             repository.SaveTasksAsJson();
         }
 
-        private Category SelecetCategory(DateTime? date)
+        private Category SelectCategory(DateTime? date)
         {
             if (date == DateTime.Now.Date)
             {
