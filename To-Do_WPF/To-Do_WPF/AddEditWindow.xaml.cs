@@ -23,6 +23,7 @@ namespace To_Do_WPF
     public partial class AddEditWindow : Window
     {
         Repository repository = Repository.Instance;
+        MyTask SelectedTask { get; set; }
         public AddEditWindow() 
         {
             InitializeComponent();
@@ -30,18 +31,36 @@ namespace To_Do_WPF
         public AddEditWindow(object task)
         {
             InitializeComponent();
-            MyTask editTask = task as MyTask;
-            addTaskName.Text = editTask.Name;
-            addTaskDate.SelectedDate = editTask.Date;
-            addTaskTime.Text = editTask.Time;
-            addTaskNote.Text = editTask.Note;
+            SelectedTask = task as MyTask;
+            addTaskName.Text = SelectedTask.Name;
+            addTaskDate.SelectedDate = SelectedTask.Date;
+            addTaskTime.Text = SelectedTask.Time;
+            addTaskNote.Text = SelectedTask.Note;
         }
 
         private void addTaskBtn_Click(object sender, RoutedEventArgs e)
         {
             if (addTaskName.Text == "")
             {
-                System.Windows.MessageBox.Show("Name can't be empty!");
+                System.Windows.MessageBox.Show("Name can't be empty!", "Error!");
+                return;
+            }
+            if (SelectedTask != null)
+            {
+                repository.TasksList.Remove(SelectedTask);
+                var previousTask1 = repository.TasksList.FirstOrDefault(x => x.Category > SelecetCategory(addTaskDate.SelectedDate));
+                repository.TasksList.Insert(previousTask1 != null ? repository.TasksList.IndexOf(previousTask1) : 0, new MyTask
+                {
+                    Id = Guid.NewGuid(),
+                    Name = addTaskName.Text,
+                    Date = addTaskDate.SelectedDate,
+                    Category = SelecetCategory(addTaskDate.SelectedDate),
+                    Time = addTaskTime.Text,
+                    Note = addTaskNote.Text,
+                    IsCompleted = false
+                });
+                repository.SaveTasksAsJson();
+                this.Close();
                 return;
             }
             var previousTask = repository.TasksList.FirstOrDefault(x => x.Category > SelecetCategory(addTaskDate.SelectedDate));
@@ -56,6 +75,7 @@ namespace To_Do_WPF
                 IsCompleted = false
             });
             repository.SaveTasksAsJson();
+            this.Close();
         }
 
         private Category SelecetCategory(DateTime? date)
