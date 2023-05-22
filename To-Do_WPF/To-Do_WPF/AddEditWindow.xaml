@@ -42,8 +42,7 @@
         </Style>
     </Window.Resources>
     <StackPanel>
-        <TextBox x:Name="addTaskName" Text="{Binding Name, ValidatesOnExceptions=True,
-                 UpdateSourceTrigger=PropertyChanged}" 
+        <TextBox x:Name="addTaskName" 
                  Style="{StaticResource MyWaterMarkStyle}"
                  Margin="10,20,10,10" FontSize="18" BorderBrush="AliceBlue"
                  Tag="Task name" Height="30" MaxLength="35"/>
@@ -60,7 +59,7 @@
                 <xctk:TimePicker x:Name="addTaskTime" Height="25" Width="70" Margin="10" Text=""/>
                 <Button x:Name="addTaskRemider" Content="Remind" Height="25" Width="50" 
                         Margin="10"/>
-                <Button x:Name="addTaskBtn" Content="Add" Height="25" Width="30" 
+                <Button x:Name="addTaskBtn" Content="Save" Height="25" Width="30" 
                         Margin="130,10,0,10" Click="addTaskBtn_Click"/>
             </StackPanel>
         </Border>

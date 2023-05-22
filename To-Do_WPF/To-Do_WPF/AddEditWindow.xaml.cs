@@ -39,6 +39,11 @@ namespace To_Do_WPF
 
         private void addTaskBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (addTaskName.Text == "")
+            {
+                System.Windows.MessageBox.Show("Name can't be empty!");
+                return;
+            }
             var previousTask = repository.TasksList.FirstOrDefault(x => x.Category > SelecetCategory(addTaskDate.SelectedDate));
             repository.TasksList.Insert(previousTask != null ? repository.TasksList.IndexOf(previousTask) : 0, new MyTask
             {
@@ -47,7 +52,8 @@ namespace To_Do_WPF
                 Date = addTaskDate.SelectedDate,
                 Category = SelecetCategory(addTaskDate.SelectedDate),
                 Time = addTaskTime.Text,
-                Note = addTaskNote.Text
+                Note = addTaskNote.Text,
+                IsCompleted = false
             });
             repository.SaveTasksAsJson();
         }

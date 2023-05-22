@@ -48,6 +48,7 @@ namespace To_Do_WPF
             task.Category = Category.Completed;
             repository.TasksList.Remove(task);
             repository.TasksList.Add(task);
+            task.IsCompleted = true;
             repository.SaveTasksAsJson();
         }
 
@@ -55,6 +56,9 @@ namespace To_Do_WPF
         {
             var task = (MyTask)((CheckBox)e.Source).DataContext;
             task.Category = SelecetCategory(task.Date);
+            repository.TasksList.Remove(task);
+            repository.TasksList.Add(task);
+            task.IsCompleted = false;
             repository.SaveTasksAsJson();
         }
 
