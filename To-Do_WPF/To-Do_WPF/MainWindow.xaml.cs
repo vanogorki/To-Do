@@ -55,14 +55,14 @@ namespace To_Do_WPF
         private void Task_Not_Completed(object sender, RoutedEventArgs e)
         {
             var task = (MyTask)((CheckBox)e.Source).DataContext;
-            task.Category = SelecetCategory(task.Date);
+            task.Category = SelectCategory(task.Date);
             repository.TasksList.Remove(task);
             repository.TasksList.Add(task);
             task.IsCompleted = false;
             repository.SaveTasksAsJson();
         }
 
-        private Category SelecetCategory(DateTime? date)
+        private Category SelectCategory(DateTime? date)
         {
             if (date == DateTime.Now.Date)
             {
