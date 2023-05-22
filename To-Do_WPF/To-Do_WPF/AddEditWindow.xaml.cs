@@ -48,21 +48,14 @@ namespace To_Do_WPF
             if (SelectedTask != null)
             {
                 repository.TasksList.Remove(SelectedTask);
-                var previousTask1 = repository.TasksList.FirstOrDefault(x => x.Category > SelecetCategory(addTaskDate.SelectedDate));
-                repository.TasksList.Insert(previousTask1 != null ? repository.TasksList.IndexOf(previousTask1) : 0, new MyTask
-                {
-                    Id = Guid.NewGuid(),
-                    Name = addTaskName.Text,
-                    Date = addTaskDate.SelectedDate,
-                    Category = SelecetCategory(addTaskDate.SelectedDate),
-                    Time = addTaskTime.Text,
-                    Note = addTaskNote.Text,
-                    IsCompleted = false
-                });
-                repository.SaveTasksAsJson();
+                AddEditTask();
                 this.Close();
                 return;
             }
+            AddEditTask();
+        }
+        private void AddEditTask()
+        {
             var previousTask = repository.TasksList.FirstOrDefault(x => x.Category > SelecetCategory(addTaskDate.SelectedDate));
             repository.TasksList.Insert(previousTask != null ? repository.TasksList.IndexOf(previousTask) : 0, new MyTask
             {
@@ -75,7 +68,6 @@ namespace To_Do_WPF
                 IsCompleted = false
             });
             repository.SaveTasksAsJson();
-            this.Close();
         }
 
         private Category SelecetCategory(DateTime? date)
