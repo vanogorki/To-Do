@@ -1,39 +1,21 @@
 [
   {
-    "Id": "527f3a90-f0a8-4dde-9483-6d6384248fa4",
-    "Name": "132321",
-    "Date": "2023-05-22T00:00:00",
+    "Id": "cc295f55-123b-4f40-86ff-511c8db0480b",
+    "Name": "sadasd123123222qwerty",
+    "Date": "2023-05-27T00:00:00",
+    "Category": 0,
+    "IsCompleted": false,
+    "Time": "17:29",
+    "Note": "asd"
+  },
+  {
+    "Id": "b73e66cb-9f03-41e0-b595-e037e8092d95",
+    "Name": "21312312",
+    "Date": "2023-05-27T00:00:00",
     "Category": 0,
     "IsCompleted": false,
     "Time": "",
     "Note": ""
-  },
-  {
-    "Id": "51992e85-5cbf-48eb-ac38-e47d519a135c",
-    "Name": "sadasd",
-    "Date": "2023-05-23T00:00:00",
-    "Category": 1,
-    "IsCompleted": false,
-    "Time": "17:29",
-    "Note": "12121"
-  },
-  {
-    "Id": "6f6a11c4-66a4-4b9a-aaec-aa50789c6f88",
-    "Name": "sadasd123123",
-    "Date": "2023-05-23T00:00:00",
-    "Category": 1,
-    "IsCompleted": false,
-    "Time": "17:29",
-    "Note": "asd"
-  },
-  {
-    "Id": "cc295f55-123b-4f40-86ff-511c8db0480b",
-    "Name": "sadasd123123222qwerty",
-    "Date": "2023-05-23T00:00:00",
-    "Category": 1,
-    "IsCompleted": false,
-    "Time": "17:29",
-    "Note": "asd"
   },
   {
     "Id": "9974d5b9-3e82-42b8-b988-d5c4a94bf212",
@@ -45,12 +27,57 @@
     "Note": "aaaadds"
   },
   {
+    "Id": "0d695262-099d-49e1-8dcb-bb9a817fd067",
+    "Name": "321312",
+    "Date": null,
+    "Category": 2,
+    "IsCompleted": false,
+    "Time": "",
+    "Note": ""
+  },
+  {
+    "Id": "15f340e6-9791-4e83-9b1c-be73bd57e663",
+    "Name": "\u0421\u0434\u0435\u043B\u0430\u0442\u044C \u0447\u0442\u043E-\u0442\u043E",
+    "Date": "2023-05-28T00:00:00",
+    "Category": 1,
+    "IsCompleted": false,
+    "Time": "10:11",
+    "Note": "\u0448\u0449\u0430\u043F\u0434\u0432\u0430\u043E\u043F\u0440\u043B\u043E\u0432\u0430\u0440\u043F\u043B\u0432\u0430\u0440\u043F\u043E\u043B"
+  },
+  {
+    "Id": "6f6a11c4-66a4-4b9a-aaec-aa50789c6f88",
+    "Name": "sadasd123123",
+    "Date": "2023-05-23T00:00:00",
+    "Category": 2,
+    "IsCompleted": false,
+    "Time": "17:29",
+    "Note": "asd"
+  },
+  {
     "Id": "d42c641a-02a4-4cb2-a6bb-1a9c2950d979",
     "Name": "asdsadzalupa",
     "Date": "2023-05-23T00:00:00",
-    "Category": 1,
+    "Category": 2,
     "IsCompleted": false,
     "Time": "18:17",
     "Note": "321321"
+  },
+  {
+    "Id": "51992e85-5cbf-48eb-ac38-e47d519a135c",
+    "Name": "sadasd",
+    "Date": "2023-05-23T00:00:00",
+    "Category": 2,
+    "IsCompleted": false,
+    "Time": "17:29",
+    "Note": "12121"
+  },
+  {
+    "Id": "ee0683d9-bc73-4bb4-abea-7519dec7a3d3",
+    "Name": "132321",
+    "Date": "2023-05-22T00:00:00",
+    "Category": 2,
+    "IsCompleted": false,
+    "Time": "",
+    "Note": ""
   }
 ]

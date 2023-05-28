@@ -25,7 +25,7 @@ namespace To_Do_WPF
         public MainWindow()
         {
             InitializeComponent();
-            AllTasks.ItemsSource = repository.TasksList;
+            AllTasks.ItemsSource = repository.GetTasksList();
 
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(AllTasks.ItemsSource);
             PropertyGroupDescription groupDescription = new PropertyGroupDescription("Category");
@@ -46,8 +46,8 @@ namespace To_Do_WPF
         {
             var task = (MyTask)((CheckBox)e.Source).DataContext;
             task.Category = Category.Completed;
-            repository.TasksList.Remove(task);
-            repository.TasksList.Add(task);
+            repository.GetTasksList().Remove(task);
+            repository.GetTasksList().Add(task);
             task.IsCompleted = true;
             repository.SaveTasksAsJson();
         }
@@ -55,25 +55,14 @@ namespace To_Do_WPF
         private void Task_Not_Completed(object sender, RoutedEventArgs e)
         {
             var task = (MyTask)((CheckBox)e.Source).DataContext;
-            task.Category = SelectCategory(task.Date);
-            repository.TasksList.Remove(task);
-            repository.TasksList.Add(task);
+            task.Category = repository.SelectCategory(task.Date);
+            repository.GetTasksList().Remove(task);
+            repository.GetTasksList().Add(task);
             task.IsCompleted = false;
             repository.SaveTasksAsJson();
         }
 
-        private Category SelectCategory(DateTime? date)
-        {
-            if (date == DateTime.Now.Date)
-            {
-                return Category.Today;
-            }
-            else if (date > DateTime.Now.Date && date <= DateTime.Now.Date.AddDays(7))
-            {
-                return Category.Week;
-            }
-            else return Category.Someday;
-        }
+        
 
         void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {

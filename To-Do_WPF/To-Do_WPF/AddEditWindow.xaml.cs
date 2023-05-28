@@ -47,17 +47,16 @@ namespace To_Do_WPF
             }
             if (SelectedTask != null)
             {
-                repository.TasksList.Remove(SelectedTask);
+                repository.GetTasksList().Remove(SelectedTask);
                 AddEditTask();
-                this.Close();
                 return;
             }
             AddEditTask();
         }
         private void AddEditTask()
         {
-            var previousTask = repository.TasksList.FirstOrDefault(x => x.Category > SelectCategory(addTaskDate.SelectedDate));
-            repository.TasksList.Insert(previousTask != null ? repository.TasksList.IndexOf(previousTask) : 0, new MyTask
+            var previousTask = repository.GetTasksList().FirstOrDefault(x => x.Category > SelectCategory(addTaskDate.SelectedDate));
+            repository.GetTasksList().Insert(previousTask != null ? repository.GetTasksList().IndexOf(previousTask) : 0, new MyTask
             {
                 Id = Guid.NewGuid(),
                 Name = addTaskName.Text,
@@ -68,6 +67,7 @@ namespace To_Do_WPF
                 IsCompleted = false
             });
             repository.SaveTasksAsJson();
+            this.Close();
         }
 
         private Category SelectCategory(DateTime? date)
@@ -81,6 +81,11 @@ namespace To_Do_WPF
                 return Category.Week;
             }
             else return Category.Someday;
+        }
+
+        private void addTaskRemider_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
